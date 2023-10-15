@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.*;
 
@@ -34,7 +35,7 @@ public class Main {
          for (int i = 1; i < V + 1; i++) {
             Queue<Integer> Q = new LinkedList<>();
             
-            if(v[i] == 0) {//시초방지
+            if(v[i] == 0) {//모든 정점을 돎!
                 Q.add(i);
                 v[i] = 1;
             }
@@ -44,18 +45,17 @@ public class Main {
 
                for (int j = 0; j < arr[p].size(); j++) {
                   int num = (int) arr[p].get(j);
-
-                     if (v[num] == 0) {
-								  
-                       if(v[p]==1) v[num] =2;
-                        else v[num] = 1;
-                        
-                        Q.add(num);
-                      } else if (v[num] == v[p]  && num!=p) {
-                         result = "NO";
-                         flag = true;
-                         break;
-                      }
+                   if (v[num] == 0) {
+                     if(v[p]==1) v[num] =2;
+                     else v[num] = 1;
+                     
+                     Q.add(num);
+                  }else if (v[num] == v[p]) {
+                      result = "NO";
+                      flag = true;
+                      break;
+                  }
+                  
                }
                if(flag) break;
             }
